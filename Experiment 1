@@ -1,0 +1,33 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner input= new Scanner(System.in);
+        System.out.println("Enter the message");
+        String text=input.nextLine().toUpperCase();
+        System.out.println("Enter the Key:");
+        int key=input.nextInt();
+        String encrypt="";
+        for(int i=0;i<text.length();i++){
+            char ch=text.charAt(i);
+            if(ch>='A' && ch<='Z'){
+                char cipher=(char)((ch-'A'+key)%26+'A');
+                encrypt=encrypt+cipher;
+            }else{
+                encrypt=encrypt+ch;
+            }
+        }
+        System.out.print("Encrypted Text:"+encrypt+"\n");
+
+        String decrypt="";
+        for(int i=0;i<encrypt.length();i++){
+            char ch=encrypt.charAt(i);
+            if(ch>='A'&& ch<='Z'){
+                char plaintext=(char)((ch-'A'-key+26)%26+'A');
+                decrypt=decrypt+plaintext;
+            }else{
+                decrypt+=ch;
+            }
+        }
+        System.out.print("Decrypted Text :"+decrypt);
+    }
+}
